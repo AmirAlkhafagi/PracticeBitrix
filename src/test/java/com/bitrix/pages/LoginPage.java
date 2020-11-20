@@ -2,6 +2,7 @@ package com.bitrix.pages;
 
 import com.bitrix.utilities.ConfigurationReader;
 import com.bitrix.utilities.Driver;
+import okhttp3.WebSocketListener;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,8 +36,15 @@ public class LoginPage extends BasePage{
 
     public static String getPageTitle(){
         String title = Driver.getDriver().getTitle();
-
         return title;
+    }
+
+
+    @FindBy(css = "[class='errortext']")
+    private WebElement errorText;
+
+    public String getErrorText(){
+        return errorText.getText();
     }
 
 }
