@@ -6,4 +6,14 @@ Feature: Verify login for Bitrix
     When user enters correct credentials
     Then user should be able to see landing page
 
-  Scenario: Login to bitrix with incorrect credentials
+
+  @negative_login
+  Scenario: Fail to login to Bitrix page when entering wrong credentials
+    Given user is on login page
+    When user enters the wrong "username" or "password"
+    Then "Incorrect login or password" message should show up
+
+
+
+
+
