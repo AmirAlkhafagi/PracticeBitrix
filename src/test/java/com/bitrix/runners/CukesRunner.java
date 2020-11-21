@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         glue = "com/bitrix/step_definitions",
         dryRun = false,
         tags = "@negative_login"
-
+//test
 )
 public class CukesRunner {
 }
