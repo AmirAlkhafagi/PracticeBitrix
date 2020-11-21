@@ -28,17 +28,22 @@ public class Login_StepDefinitions {
         String actual = Driver.getDriver().getTitle();
 
         Assert.assertEquals("actual and expected titles did not match", expected, actual);
+
     }
 
-    @When("user enters the wrong {string} or {string}")
-    public void user_enters_the_wrong_or(String string, String string2) {
-       loginPage.login(string, string2);
+    @When("user logs in with {string} username and {string} password")
+    public void user_logs_in_with_username_and_password(String username, String password) {
+       loginPage.login(username, password);
     }
 
-    @Then("{string} message should show up")
-    public void message_should_show_up(String expected) {
-        String actualErrorText = loginPage.getErrorText();
-        Assert.assertEquals("The error message does not show up. Verification failed!!!", actualErrorText, expected);
+
+    @Then("user verifies that {string} message is displayed")
+    public void user_verifies_that_message_is_displayed(String expected) {
+        String actualResult = loginPage.getWarningMessageText();
+        Assert.assertEquals("Actual result is failed", actualResult,  expected);
+
+
     }
+
 
 }

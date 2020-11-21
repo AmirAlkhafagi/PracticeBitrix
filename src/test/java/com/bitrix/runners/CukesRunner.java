@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/bitrix/step_definitions",
         dryRun = false,
-        tags = "@negative_login"
-//test
+        tags = "@negative_scenario_outline"
+
 )
 public class CukesRunner {
 }

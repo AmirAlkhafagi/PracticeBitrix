@@ -2,10 +2,11 @@ package com.bitrix.pages;
 
 import com.bitrix.utilities.ConfigurationReader;
 import com.bitrix.utilities.Driver;
-import okhttp3.WebSocketListener;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
 
 public class LoginPage extends BasePage{
 
@@ -23,9 +24,9 @@ public class LoginPage extends BasePage{
         passwordInputBox.sendKeys(password + Keys.ENTER);
     }
 
-    public static void login(String username, String password){
+    public void login(String username, String password){
         usernameInputBox.sendKeys(username);
-        passwordInputBox.sendKeys(password+ Keys.ENTER);
+        passwordInputBox.sendKeys(password ,Keys.ENTER);
     }
 
     public static void getUrl(){
@@ -36,15 +37,19 @@ public class LoginPage extends BasePage{
 
     public static String getPageTitle(){
         String title = Driver.getDriver().getTitle();
+
         return title;
     }
 
+    @FindBy (css = "[class ='errortext']")
+    private WebElement warningMessage;
 
-    @FindBy(css = "[class='errortext']")
-    private WebElement errorText;
-
-    public String getErrorText(){
-        return errorText.getText();
+    public String getWarningMessageText() {
+        Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    return warningMessage.getText().trim();
     }
+
+
+
 
 }
