@@ -11,6 +11,7 @@ Feature: Verify login for Bitrix
 
 
   @negative_login
+
   Scenario: Invalid password
     When user logs in with "helpdesk15@cybertekschool.com" username and "wrong" password
     Then user verifies that "Incorrect login or password" message is displayed
@@ -27,6 +28,22 @@ Feature: Verify login for Bitrix
       | wrong213 | bad      | Incorrect login or password |
       | wrong32  | bad      | Incorrect login or password |
       | wrong12  | bad      | Incorrect login or password |
+
+  Scenario: Fail to login to Bitrix page when entering wrong credentials
+    Given user is on login page
+    When user enters the wrong "username" or "password"
+    Then "Incorrect login or password" message should show up
+
+    # Hello(This is for first commit)
+
+#hi this is amir
+  #comment 2
+
+  #3rd try
+
+
+
+
 
 
 
