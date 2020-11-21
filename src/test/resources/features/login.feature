@@ -16,7 +16,7 @@ Feature: Verify login for Bitrix
     Then user verifies that "Incorrect login or password" message is displayed
 
 
-  @negative_scenario_outline
+  @negative_scenario_out
   Scenario Outline: Invalid login with "username" and "password"
     When user logs in with "<username>" username and "<password>" password
     Then user verifies that "<message>" message is displayed
