@@ -6,6 +6,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
+
 public class LoginPage extends BasePage{
 
     @FindBy (name = "USER_LOGIN")
@@ -22,9 +24,9 @@ public class LoginPage extends BasePage{
         passwordInputBox.sendKeys(password + Keys.ENTER);
     }
 
-    public static void login(String username, String password){
+    public void login(String username, String password){
         usernameInputBox.sendKeys(username);
-        passwordInputBox.sendKeys(password+ Keys.ENTER);
+        passwordInputBox.sendKeys(password ,Keys.ENTER);
     }
 
     public static void getUrl(){
@@ -38,5 +40,16 @@ public class LoginPage extends BasePage{
 
         return title;
     }
+
+    @FindBy (css = "[class ='errortext']")
+    private WebElement warningMessage;
+
+    public String getWarningMessageText() {
+        Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    return warningMessage.getText().trim();
+    }
+
+
+
 
 }
