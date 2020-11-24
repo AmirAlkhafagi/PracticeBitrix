@@ -1,4 +1,4 @@
-Feature: Verify login for Bitrix project
+Feature: Verify login for Bitrix project with correct credentials.
 
   @login
   Scenario: Login to Bitrix page with correct credentials
