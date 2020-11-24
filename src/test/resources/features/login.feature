@@ -1,4 +1,4 @@
-Feature: Verify login for Bitrix
+Feature: Verify login for Bitrix project with correct credentials.
 
   Background:
     Given user is on login page
